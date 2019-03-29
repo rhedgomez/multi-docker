@@ -20,3 +20,19 @@ after_success:
   - docker push rhedgomez/multi-nginx
   - docker push rhedgomez/multi-server
   - docker push rhedgomez/multi-worker
+
+deploy: #adding below bunch of configuration to tell travis CI exactly how to take our application
+          #and deploy it to AWS
+  provider: elasticbeanstalk #travis CI comes pre-configured to deploy our application to handful of different providers
+  region: "sa-east-1"  #provide the region where our EBS was created ex. sa-east-1 from the URL(http://dockerreact-env.fep39ynavx.sa-east-1.elasticbeanstalk.com/)
+  app: "mutil-docker " #name of the EBS application that you had directed on AWS EBS dashboard
+  env: "MutilDocker-env" #environtment name, when created the EBS application name:multi-docker that's just kinda setting up a common set of configuration. 
+          #The actual app running inside of multi-docker(EBS) is not really reffered to as an app but referred to as "environment"
+  bucket_name: elasticbeanstalk-sa-east-1-636026759053
+  bucket-path: docker-multi
+  on:
+    branch: master
+  
+  access_key_id: $AWS_ACCESS_KEY # is goin to come from the environment variable of $AWS_ACCESS_KEY.This is coming from a local environment config(on the travis ci)
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY" 
