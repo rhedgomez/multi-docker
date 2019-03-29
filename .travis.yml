@@ -26,7 +26,7 @@ deploy: #adding below bunch of configuration to tell travis CI exactly how to ta
   provider: elasticbeanstalk #travis CI comes pre-configured to deploy our application to handful of different providers
   region: "sa-east-1"  #provide the region where our EBS was created ex. sa-east-1 from the URL(http://dockerreact-env.fep39ynavx.sa-east-1.elasticbeanstalk.com/)
   app: "multi-dockers " #name of the EBS application that you had directed on AWS EBS dashboard
-  env: "MutilDockers-env" #environtment name, when created the EBS application name:multi-docker that's just kinda setting up a common set of configuration. 
+  env: "MultiDockers-env" #environtment name, when created the EBS application name:multi-docker that's just kinda setting up a common set of configuration. 
           #The actual app running inside of multi-docker(EBS) is not really reffered to as an app but referred to as "environment"
   bucket_name: elasticbeanstalk-sa-east-1-636026759053
   bucket-path: docker-multis
